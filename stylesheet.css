@@ -89,8 +89,8 @@ li {
 
 .contents {
   height: 800px;
-  margin-top: 10%;  
-  box-sizing:border-box;
+  margin-top: 10%;
+  box-sizing: border-box;
 }
 
 .section-title {
@@ -168,22 +168,13 @@ li {
 }
 
 .footer-logo p {
-    text-align: justify;
-    font-size: 20px;
-    margin-right: 65%;
-}
-
-.footer-about {
-  position: absolute;
-  float: left;
-  margin-top: 4%;
-  margin-right: 65%;
   text-align: justify;
-  font-size: large;
+  font-size: 20px;
+  margin-right: 65%;
 }
 
 .footer-list li a {
-    padding: 15px;
+  padding: 15px;
   float: right;
   color: black;
   font-size: 20px;
