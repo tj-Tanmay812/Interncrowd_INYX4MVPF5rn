@@ -217,5 +217,85 @@
       <div class="caps-lock-indicator">Caps Lock is On</div>
       <div class="input-validation">Instant Input Validation</div>
     </footer>
+    <script>
+      // Get DOM elements
+      const emailInput = document.getElementById("email");
+      const passwordInput = document.getElementById("password");
+      const rememberMeCheckbox = document.getElementById("remember-me");
+      const capsLockIndicator = document.querySelector(".caps-lock-indicator");
+      const inputValidation = document.querySelector(".input-validation");
+      const signupForm = document.querySelector("#signup form");
+      const loginForm = document.querySelector("#login form");
+
+      // Check if caps lock is on
+      passwordInput.addEventListener("keyup", function (event) {
+        if (event.getModifierState("CapsLock")) {
+          capsLockIndicator.style.display = "block";
+        } else {
+          capsLockIndicator.style.display = "none";
+        }
+      });
+
+      // Instant input validation
+      emailInput.addEventListener("input", function (event) {
+        if (emailInput.validity.valid) {
+          inputValidation.style.display = "none";
+        } else {
+          inputValidation.style.display = "block";
+        }
+      });
+      passwordInput.addEventListener("input", function (event) {
+        if (passwordInput.validity.valid) {
+          inputValidation.style.display = "none";
+        } else {
+          inputValidation.style.display = "block";
+        }
+      });
+
+      // Check password requirements
+      function checkPasswordRequirements(password) {
+        const regex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+        return regex.test(password);
+      }
+
+      // Validate sign-up form
+      signupForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const email = emailInput.value;
+        const password = passwordInput.value;
+        if (!checkPasswordRequirements(password)) {
+          alert(
+            "Password must be 8 or more characters and contain at least 1 number and 1 special character."
+          );
+          return;
+        }
+        // Handle sign-up with email
+        // ...
+      });
+
+      // Validate login form
+      loginForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const email = emailInput.value;
+        const password = passwordInput.value;
+        if (!checkPasswordRequirements(password)) {
+          alert("Invalid email or password.");
+          return;
+        }
+        if (rememberMeCheckbox.checked) {
+          setCookie("login", email, 30);
+        }
+        // Handle login
+        // ...
+      });
+
+      // Set cookie function
+      function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+      }
+    </script>
   </body>
 </html>

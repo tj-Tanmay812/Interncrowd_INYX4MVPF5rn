@@ -1,92 +1,88 @@
-// DOM elements
-const loginForm = document.querySelector('.login-form');
-const signupForm = document.querySelector('.signup-form');
-const loginToggle = document.querySelector('#login-toggle');
-const signupToggle = document.querySelector('#signup-toggle');
-const emailInput = document.querySelector('#email');
-const passwordInput = document.querySelector('#password');
-const confirmPasswordInput = document.querySelector('#confirm-password');
-const capsLockWarning = document.querySelector('#caps-lock-warning');
-const passwordRequirements = document.querySelector('#password-requirements');
-const loginWithGoogleButton = document.querySelector('#login-with-google');
-const rememberMeCheckbox = document.querySelector('#remember-me');
-const forgotPasswordLink = document.querySelector('#forgot-password');
-
-// Input validation functions
-function validateEmail(email) {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(email);
-}
-
-function validatePassword(password) {
-  const re = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-  return re.test(password);
-}
-
-// Show/hide forms
-function showLoginForm() {
-  loginForm.classList.add('show');
-  signupForm.classList.remove('show');
-}
-
-function showSignupForm() {
-  signupForm.classList.add('show');
-  loginForm.classList.remove('show');
-}
-
-// Input validation and feedback
-emailInput.addEventListener('input', function() {
-  if (!validateEmail(emailInput.value)) {
-    emailInput.classList.add('invalid');
-    emailInput.nextElementSibling.innerText = 'Please enter a valid email address';
-  } else {
-    emailInput.classList.remove('invalid');
-    emailInput.nextElementSibling.innerText = '';
+// Switch between login and signup tabs
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].classList.remove("active");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.classList.add("active");
   }
-});
-
-passwordInput.addEventListener('input', function() {
-  if (passwordInput.value.length < 8) {
-    passwordInput.classList.add('invalid');
-    passwordRequirements.innerText = 'Password must be at least 8 characters long';
-  } else if (!/\d/.test(passwordInput.value)) {
-    passwordInput.classList.add('invalid');
-    passwordRequirements.innerText = 'Password must contain at least 1 number';
-  } else if (!/[!@#$%^&*]/.test(passwordInput.value)) {
-    passwordInput.classList.add('invalid');
-    passwordRequirements.innerText = 'Password must contain at least 1 special character';
-  } else if (!/[a-z]/.test(passwordInput.value) || !/[A-Z]/.test(passwordInput.value)) {
-    passwordInput.classList.add('invalid');
-    passwordRequirements.innerText = 'Password must contain at least 1 uppercase and 1 lowercase letter';
-  } else {
-    passwordInput.classList.remove('invalid');
-    passwordRequirements.innerText = '';
+  
+  // Login form submission
+  function login(event) {
+    event.preventDefault();
+    var emailInput = document.getElementById("login-email");
+    var passwordInput = document.getElementById("login-password");
+    var messageBox = document.getElementById("login-message");
+    var email = emailInput.value;
+    var password = passwordInput.value;
+    if (!email) {
+      messageBox.innerText = "Please enter your email address.";
+      return;
+    }
+    if (!password) {
+      messageBox.innerText = "Please enter your password.";
+      return;
+    }
+    // Send AJAX request to server to authenticate user
+    // If authentication succeeds, redirect user to dashboard
+    // If authentication fails, display error message
   }
-});
-
-confirmPasswordInput.addEventListener('input', function() {
-  if (passwordInput.value !== confirmPasswordInput.value) {
-    confirmPasswordInput.classList.add('invalid');
-    confirmPasswordInput.nextElementSibling.innerText = 'Passwords do not match';
-  } else {
-    confirmPasswordInput.classList.remove('invalid');
-    confirmPasswordInput.nextElementSibling.innerText = '';
+  
+  // Signup form submission
+  function signup(event) {
+    event.preventDefault();
+    var emailInput = document.getElementById("signup-email");
+    var passwordInput = document.getElementById("signup-password");
+    var confirmPasswordInput = document.getElementById("signup-confirm-password");
+    var messageBox = document.getElementById("signup-message");
+    var email = emailInput.value;
+    var password = passwordInput.value;
+    var confirmPassword = confirmPasswordInput.value;
+    if (!email) {
+      messageBox.innerText = "Please enter your email address.";
+      return;
+    }
+    if (!password) {
+      messageBox.innerText = "Please enter a password.";
+      return;
+    }
+    if (password.length < 8) {
+      messageBox.innerText = "Password must be at least 8 characters long.";
+      return;
+    }
+    if (!/\d/.test(password)) {
+      messageBox.innerText = "Password must contain at least one number.";
+      return;
+    }
+    if (!/[!@#$%^&*]/.test(password)) {
+      messageBox.innerText = "Password must contain at least one special character (!@#$%^&*).";
+      return;
+    }
+    if (password !== confirmPassword) {
+      messageBox.innerText = "Passwords do not match.";
+      return;
+    }
+    // Send AJAX request to server to create new user
+    // If user creation succeeds, redirect user to dashboard
+    // If user creation fails, display error message
   }
-});
-
-// Caps lock warning
-passwordInput.addEventListener('keydown', function(event) {
-  if (event.getModifierState('CapsLock')) {
-    capsLockWarning.style.display = 'block';
-  } else {
-    capsLockWarning.style.display = 'none';
+  
+  // Clear message box when user starts typing
+  function clearMessage(event) {
+    var messageBox = event.target.nextElementSibling;
+    messageBox.innerText = "";
   }
-});
-
-// Toggle between forms
-loginToggle.addEventListener('click', showLoginForm);
-signupToggle.addEventListener('click', showSignupForm);
-
-// Sign up with social media
-loginWithGoogleButton.addEventListener('click', function() {
- 
+  
+  // Initialize event listeners
+  document.getElementById("login-form").addEventListener("submit", login);
+  document.getElementById("signup-form").addEventListener("submit", signup);
+  document.querySelectorAll(".input-field input").forEach(function(input) {
+    input.addEventListener("input", clearMessage);
+  });
+  
