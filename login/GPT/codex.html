@@ -1,301 +1,130 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login and Sign-up Page</title>
-    <!-- <link rel="stylesheet" href="style.css" /> -->
-
+    <title>Login/Signup Page</title>
     <style>
-      /* Reset styles */
       * {
         box-sizing: border-box;
-        margin: 0;
-        padding: 0;
       }
-      /* Global styles */
       body {
-        font-family: sans-serif;
+        font-family: Arial, sans-serif;
       }
-      header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 60px;
-        background-color: #333;
-        color: #fff;
-        padding: 0 20px;
+      .form-container {
+        position: relative;
+        background-color: #f2f2f2;
+        padding: 20px;
+        margin: auto;
+        width: 400px;
+        height: 450px;
       }
-      .logo {
-        font-size: 1.5rem;
-      }
-      nav ul {
-        list-style: none;
-        display: flex;
-      }
-      nav ul li {
-        margin-left: 20px;
-      }
-      nav ul li a {
-        color: #fff;
-        text-decoration: none;
-        font-size: 1.2rem;
-      }
-      main {
-        padding: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-      }
-      section {
-        max-width: 400px;
-        margin: 0 20px;
-        text-align: center;
-      }
-      h1 {
-        font-size: 2.5rem;
+      .tab-container {
+        position: relative;
         margin-bottom: 20px;
       }
-      form {
-        display: flex;
-        flex-direction: column;
-      }
-      .form-group {
-        margin-bottom: 20px;
-      }
-      label {
-        font-weight: 600;
-        font-size: 1.2rem;
-        margin-bottom: 5px;
-        display: block;
-        text-align: left;
-      }
-      input[type="email"],
-      input[type="password"] {
-        border-radius: 5px;
+      .tab-container button {
+        background-color: #f2f2f2;
+        color: #444;
+        float: left;
+        margin-right: 10px;
         border: none;
-        padding: 10px;
-        font-size: 1.2rem;
         outline: none;
-        border: 1px solid #ccc;
-      }
-      input[type="email"]:focus,
-      input[type="password"]:focus {
-        border-color: #333;
-      }
-      .signup-btn,
-      .login-btn {
-        background-color: #333;
-        color: #fff;
-        border-radius: 5px;
-        padding: 10px;
-        font-size: 1.2rem;
-        border: none;
         cursor: pointer;
-        transition: background-color 0.3s ease-in-out;
+        padding: 14px 16px;
+        font-size: 17px;
       }
-      .signup-btn:hover,
-      .login-btn:hover {
-        background-color: #555;
+      .tab-container button:hover {
+        background-color: #ddd;
       }
-      .or-divider {
-        margin: 20px 0;
-        font-size: 1.2rem;
-      }
-      .social-login {
-        display: flex;
-        justify-content: space-between;
-      }
-      .social-login button {
+      .tab-container button.active {
         background-color: #ccc;
-        color: #333;
-        border-radius: 5px;
+      }
+      .tab-content {
         padding: 10px;
-        font-size: 1.2rem;
+        border: 1px solid #ccc;
+        border-top: none;
+      }
+      .input-field {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+      }
+      .btn {
+        background-color: rgb(76, 175, 80);
+        color: #fff;
+        padding: 10px 20px;
+        margin-top: 10px;
         border: none;
         cursor: pointer;
-        transition: background-color 0.3s ease-in-out;
+        width: 100%;
+        font-size: 17px;
       }
-      .social-login button:hover {
-        background-color: #eee;
-      }
-      .password-recovery {
-        margin-top: 20px;
-      }
-      .password-recovery a {
-        color: #333;
-      }
-      .password-requirements {
-        font-size: 1.2rem;
-        margin-bottom: 20px;
-        text-align: center;
-      }
-      .caps-lock-indicator {
-        font-size: 1.2rem;
-        margin-bottom: 20px;
-        text-align: center;
-      }
-      .input-validation {
-        font-size: 1.2rem;
-        margin-bottom: 20px;
-        text-align: center;
+      .btn:hover {
+        background-color: rgb(69, 160, 73);
       }
     </style>
   </head>
   <body>
-    <header>
-      <div class="logo">Website Logo</div>
-      <nav>
-        <ul>
-          <li><a href="#login">Login</a></li>
-          <li><a href="#signup">Sign-up</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <section id="signup">
-        <h1>Sign-up</h1>
-        <form>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required />
-            <div class="password-requirements">
-              Must be 8 or more characters and contain at least 1 number and 1
-              special character
-            </div>
-          </div>
-          <div class="form-group">
-            <button type="submit" class="signup-btn">Sign-up with Email</button>
-          </div>
-          <div class="or-divider">Or sign-up with</div>
-          <div class="social-login">
-            <button class="facebook-btn">Facebook</button>
-            <button class="twitter-btn">Twitter</button>
-            <button class="google-btn">Google</button>
-          </div>
-        </form>
-      </section>
-      <section id="login">
-        <h1>Login</h1>
-        <form>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required />
-          </div>
-          <div class="form-group">
-            <label for="remember-me">
-              <input
-                type="checkbox"
-                id="remember-me"
-                name="remember-me"
-              />Remember me
-            </label>
-          </div>
-          <div class="form-group">
-            <button type="submit" class="login-btn">Login</button>
-          </div>
-        </form>
-        <div class="password-recovery">
-          <a href="#">Forgot Password?</a>
-        </div>
-      </section>
-    </main>
-    <footer>
-      <div class="password-requirements">
-        Must be 8 or more characters and contain at least 1 number and 1 special
-        character
+    <div class="form-container">
+      <div class="tab-container">
+        <button class="tab-btn active" data-tab="login">Login</button>
+        <button class="tab-btn" data-tab="signup">Signup</button>
       </div>
-      <div class="caps-lock-indicator">Caps Lock is On</div>
-      <div class="input-validation">Instant Input Validation</div>
-    </footer>
+      <div class="tab-content">
+        <div id="login">
+          <form action="#" method="post">
+            <div class="input-field">
+              <label for="username">Username</label>
+              <input type="text" name="username" id="username" placeholder="Enter your username" required>
+            </div>
+            <div class="input-field">
+              <label for="password">Password</label>
+              <input type="password" name="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <input type="submit" value="Login" class="btn">
+          </form>
+        </div>
+        <div id="signup" hidden>
+          <form action="#" method="post">
+            <div class="input-field">
+              <label for="name">Name</label>
+              <input type="text" name="name" id="name" placeholder="Enter your name" required>
+            </div>
+            <div class="input-field">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-field">
+              <label for="password">Password</label>
+              <input type="password" name="password" id="password" placeholder="Create a password" required>
+            </div>
+            <input type="submit" value="Signup" class="btn">
+          </form>
+        </div>
+      </div>
+    </div>
     <script>
-      // Get DOM elements
-      const emailInput = document.getElementById("email");
-      const passwordInput = document.getElementById("password");
-      const rememberMeCheckbox = document.getElementById("remember-me");
-      const capsLockIndicator = document.querySelector(".caps-lock-indicator");
-      const inputValidation = document.querySelector(".input-validation");
-      const signupForm = document.querySelector("#signup form");
-      const loginForm = document.querySelector("#login form");
+      const tabBtns = document.querySelectorAll(".tab-btn");
+      const tabContent = document.querySelectorAll(".tab-content");
 
-      // Check if caps lock is on
-      passwordInput.addEventListener("keyup", function (event) {
-        if (event.getModifierState("CapsLock")) {
-          capsLockIndicator.style.display = "block";
-        } else {
-          capsLockIndicator.style.display = "none";
-        }
+      tabBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const target = e.currentTarget;
+          const tabName = target.dataset.tab;
+
+          tabContent.forEach((tabContent) => {
+            tabContent.classList.remove("active");
+            if (tabContent.id === tabName) {
+              tabContent.classList.add("active");
+            }
+          });
+          tabBtns.forEach((btn) => {
+            btn.classList.remove("active");
+            if (btn.dataset.tab === tabName) {
+              btn.classList.add("active");
+            }
+          });
+        });
       });
-
-      // Instant input validation
-      emailInput.addEventListener("input", function (event) {
-        if (emailInput.validity.valid) {
-          inputValidation.style.display = "none";
-        } else {
-          inputValidation.style.display = "block";
-        }
-      });
-      passwordInput.addEventListener("input", function (event) {
-        if (passwordInput.validity.valid) {
-          inputValidation.style.display = "none";
-        } else {
-          inputValidation.style.display = "block";
-        }
-      });
-
-      // Check password requirements
-      function checkPasswordRequirements(password) {
-        const regex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-        return regex.test(password);
-      }
-
-      // Validate sign-up form
-      signupForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-        const email = emailInput.value;
-        const password = passwordInput.value;
-        if (!checkPasswordRequirements(password)) {
-          alert(
-            "Password must be 8 or more characters and contain at least 1 number and 1 special character."
-          );
-          return;
-        }
-        // Handle sign-up with email
-        // ...
-      });
-
-      // Validate login form
-      loginForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-        const email = emailInput.value;
-        const password = passwordInput.value;
-        if (!checkPasswordRequirements(password)) {
-          alert("Invalid email or password.");
-          return;
-        }
-        if (rememberMeCheckbox.checked) {
-          setCookie("login", email, 30);
-        }
-        // Handle login
-        // ...
-      });
-
-      // Set cookie function
-      function setCookie(name, value, days) {
-        const date = new Date();
-        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-        const expires = "expires=" + date.toUTCString();
-        document.cookie = name + "=" + value + ";" + expires + ";path=/";
-      }
     </script>
   </body>
 </html>

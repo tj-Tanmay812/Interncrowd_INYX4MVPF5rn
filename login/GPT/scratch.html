@@ -1,70 +1,52 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Login and Sign-up Page</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="header">
-        <h1>Login and Sign-up Page</h1>
-      </div>
-      <div class="form-container">
-        <div class="form-toggle">
-          <input type="radio" id="login" name="form-toggle" checked />
-          <label for="login">Log in</label>
-          <input type="radio" id="signup" name="form-toggle" />
-          <label for="signup">Sign up</label>
-        </div>
-        <form class="login-form" action="login.php" method="post">
-          <h2>Log in</h2>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
-            <div class="input-feedback"></div>
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required />
-            <div class="input-feedback"></div>
-            <div class="caps-lock">Caps Lock is on</div>
-          </div>
-          <div class="form-group">
-            <input type="checkbox" id="remember-me" name="remember-me" />
-            <label for="remember-me">Remember me</label>
-          </div>
-          <div class="form-group">
-            <button type="submit">Log in</button>
-          </div>
-          <div class="form-group">
-            <a href="forgot-password.php">Forgot Password?</a>
-          </div>
-        </form>
-        <form class="signup-form" action="signup.php" method="post">
-          <h2>Sign up</h2>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
-            <div class="input-feedback"></div>
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required />
-            <div class="input-feedback"></div>
-            <div class="caps-lock">Caps Lock is on</div>
-            <div class="password-requirements">
-              Must be 8 or more characters long, contain at least 1 number, and
-              at least 1 special character
+    <head>
+        <title>Login-Sign-up Page</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="switch">
+                <div class="login">Login</div>
+                <div class="signup">Sign Up</div>
             </div>
-          </div>
-          <div class="form-group">
-            <button type="submit">Sign up</button>
-          </div>
-        </form>
-      </div>
-    </div>
-    <script src="script.js"></script>
-  </body>
+
+            <div class="outer">
+                <form action="" id="form">
+                    <div id="page">
+                        <label for="">Login Form </label>
+                        <div class="element">
+                            <input type="text" placeholder="Username" />
+                            <span class="fas fa-user"></span>
+                        </div>
+                        <div class="element">
+                            <input type="password" placeholder="Password" />
+                            <span class="fas fa-lock"></span>
+                        </div>
+                        <button id="btn">Login</button>
+                    </div>
+
+                    <div id="page">
+                        <label for="">Signup Form </label>
+                        <div class="element">
+                            <input type="text" placeholder="Email Address" />
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                        <div class="element">
+                            <input type="text" placeholder="Username" />
+                            <span class="fas fa-user"></span>
+                        </div>
+                        <div class="element">
+                            <input type="password" placeholder="Password" />
+                            <span class="fas fa-lock"></span>
+                        </div>
+                        <button id="btn">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
 </html>

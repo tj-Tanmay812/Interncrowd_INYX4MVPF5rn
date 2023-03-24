@@ -1,137 +1,108 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    outline: none;
 }
 
 body {
-  background-color: #f2f2f2;
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(-45deg, #00d5fc, #046af6);
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+    position: relative;
+    align-items: center;
+    padding: 20px 30px;
+    width: 400px;
+    background: #0b0909;
+    border-radius: 4px;
+    box-shadow: 0px 0px 15px black;
 }
 
-.header {
-  text-align: center;
-  margin-bottom: 20px;
+.switch {
+    position: absolute;
+    right: 30px;
+    display: flex;
+    border-bottom: 1px solid #feoo66;
 }
 
-.form-container {
-  background-color: #ffffff;
-  border: 1px solid #e6e6e6;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.login {
+    padding: 5px 20px;
+    background: linear-gradient(45deg, #00d5fc, #046af6);
+    margin-bottom: 10px;
+    border-radius: 50px;
+    text-align: right;
+    margin-left: 4px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
 
-.form-toggle {
-  display: flex;
-  margin-bottom: 20px;
+.signup {
+    padding: 5px 20px;
+    background: linear-gradient(45deg, #00d5fc, #046af6);
+    margin-bottom: 10px;
+    border-radius: 50px;
+    text-align: right;
+    margin-left: 4px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
 
-.form-toggle label {
-  background-color: #f2f2f2;
-  padding: 10px 20px;
-  border: 1px solid #e6e6e6;
-  border-bottom: none;
-  cursor: pointer;
+.container .outer{
+    width: 1005;
+    margin-top: 40px;
+    text-align: center;
+    position: relative;
 }
 
-.form-toggle label:hover {
-  background-color: #e6e6e6;
+.outer #form{
+    width: 200%;
+    position: relative;
+    display: flex;
+    margin: auto;
+    transition: 0.2 ease-in-out;
 }
 
-.form-toggle input[type="radio"] {
-  display: none;
+#page{
+    margin: auto;
+    width: 100%;
 }
 
-.form-toggle input[type="radio"]:checked + label {
-  background-color: #ffffff;
-  border: 1px solid #e6e6e6;
-  border-bottom: none;
+label{
+    display: block;
+    margin-bottom: 5px;
+    padding: 10px 15px;
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
-.login-form,
-.signup-form {
-  display: none;
+.element{
+    position: relative;
 }
 
-.login-form.show,
-.signup-form.show {
-  display: block;
+.element input{
+    width: 80%;
+    height: 40px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    background: #2a2a2a;
+    border: 1px solid #f5f4f4;
+    padding-left: 40px;
+    font-size: 20px;
+    letter-spacing: 1px;
 }
 
-.form-group {
-  margin-bottom: 20px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.form-group input[type="email"],
-.form-group input[type="password"] {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #e6e6e6;
-  border-radius: 3px;
-  font-size: 16px;
-  color: #333333;
-}
-
-.form-group input[type="email"]:focus,
-.form-group input[type="password"]:focus {
-  outline: none;
-  border-color: #333333;
-}
-
-.input-feedback {
-  margin-top: 5px;
-  font-size: 12px;
-  color: red;
-}
-
-.caps-lock,
-.password-requirements {
-  font-size: 12px;
-  color: #333333;
-  margin-top: 5px;
-}
-
-.password-requirements {
-  color: green;
-}
-
-.form-group button[type="submit"] {
-  background-color: #333333;
-  color: #ffffff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.form-group button[type="submit"]:hover {
-  background-color: #666666;
-}
-
-.form-group a {
-  color: #333333;
-  font-size: 14px;
-  text-decoration: none;
-}
-
-.form-group a:hover {
-  text-decoration: underline;
+input::placeholder{
+    color: #d4cdcd;
+    font-size: 20px;
+    
 }
