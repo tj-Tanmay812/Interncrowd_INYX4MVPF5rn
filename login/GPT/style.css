@@ -27,12 +27,35 @@ body {
     position: absolute;
     right: 30px;
     display: flex;
-    border-bottom: 1px solid #feoo66;
+    border-bottom: 1px solid #fe0066;
+}
+
+.switch:active {
+    border-bottom: 1px solid #12ff00;
+}
+
+.switch:after {
+    content: "";
+    height: 6px;
+    width: 60px;
+    background: #fe0066;
+    border-radius: 60px 60px 0 0;
+    position: absolute;
+    bottom: 0;
+    left: 8px;
+    transition: 0.3s ease;
+}
+
+.switch:active:after {
+    left: 110px;
+    width: 70px;
+    background: #12ff00;
 }
 
 .login {
     padding: 5px 20px;
     background: linear-gradient(45deg, #00d5fc, #046af6);
+    color: #f5f4f4;
     margin-bottom: 10px;
     border-radius: 50px;
     text-align: right;
@@ -44,7 +67,7 @@ body {
 
 .signup {
     padding: 5px 20px;
-    background: linear-gradient(45deg, #00d5fc, #046af6);
+    color: #f5f4f4;
     margin-bottom: 10px;
     border-radius: 50px;
     text-align: right;
@@ -54,14 +77,15 @@ body {
     transition: 0.3s ease;
 }
 
-.container .outer{
+.container .outer {
     width: 1005;
     margin-top: 40px;
     text-align: center;
     position: relative;
+    overflow: hidden;
 }
 
-.outer #form{
+.outer #form {
     width: 200%;
     position: relative;
     display: flex;
@@ -69,12 +93,12 @@ body {
     transition: 0.2 ease-in-out;
 }
 
-#page{
+#page {
     margin: auto;
     width: 100%;
 }
 
-label{
+label {
     display: block;
     margin-bottom: 5px;
     padding: 10px 15px;
@@ -85,11 +109,11 @@ label{
     text-transform: uppercase;
 }
 
-.element{
+.element {
     position: relative;
 }
 
-.element input{
+.element input {
     width: 80%;
     height: 40px;
     border-radius: 4px;
@@ -101,8 +125,29 @@ label{
     letter-spacing: 1px;
 }
 
-input::placeholder{
+input::placeholder {
     color: #d4cdcd;
     font-size: 20px;
-    
+}
+
+.element span {
+    position: absolute;
+    left: 30px;
+    top: 12px;
+    font-size: 18px;
+}
+
+#btn {
+    padding: 5px 25px;
+    background: linear-gradient(45deg, #0326f9, #01fcf9);
+    border-radius: 50px;
+    font-size: 25px;
+    text-transform: uppercase;
+    border: none;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+#btn:active {
+    transform: scale(1.01);
 }
